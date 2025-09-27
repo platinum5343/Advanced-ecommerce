@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "title": "Apple iPhone 14 Pro",
+    "price": 999,
+    "image": "/images/iphone14pro.jpg",
+    "category": "Phones",
+    "description": "Apple iPhone 14 Pro with A16 Bionic chip, 6.1-inch display, and triple-lens camera system."
+  },
+  {
+    "id": 2,
+    "title": "Samsung Galaxy S23 Ultra",
+    "price": 1199,
+    "image": "/images/galaxy-s23-ultra.jpg",
+    "category": "Phones",
+    "description": "Samsung Galaxy S23 Ultra with 200MP camera, Snapdragon processor, and 6.8-inch AMOLED display."
+  },
+  {
+    "id": 3,
+    "title": "Dell XPS 13 Laptop",
+    "price": 1299,
+    "image": "/images/dell-xps13.jpg",
+    "category": "Laptops",
+    "description": "Dell XPS 13 ultrabook with Intel i7 processor, 16GB RAM, and 512GB SSD storage."
+  },
+  {
+    "id": 4,
+    "title": "Apple MacBook Air M2",
+    "price": 1499,
+    "image": "/images/macbook-air-m2.jpg",
+    "category": "Laptops",
+    "description": "Apple MacBook Air powered by M2 chip with 13.6-inch Liquid Retina display and all-day battery life."
+  },
+  {
+    "id": 5,
+    "title": "Sony WH-1000XM5 Headphones",
+    "price": 399,
+    "image": "/images/sony-wh1000xm5.jpg",
+    "category": "Accessories",
+    "description": "Noise-cancelling wireless headphones with superior sound and long battery life."
+  },
+  {
+    "id": 6,
+    "title": "Nike Air Max 270 Sneakers",
+    "price": 150,
+    "image": "/images/nike-airmax270.jpg",
+    "category": "Sneakers",
+    "description": "Comfortable and stylish sneakers with modern Air Max cushioning technology."
+  },
+  {
+    "id": 7,
+    "title": "Adidas Ultraboost 22",
+    "price": 180,
+    "image": "/images/adidas-ultraboost22.jpg",
+    "category": "Accessories",
+    "description": "High-performance running shoes with responsive cushioning and breathable knit upper."
+  },
+  {
+    "id": 8,
+    "title": "Apple Watch Series 8",
+    "price": 499,
+    "image": "/images/apple-watch8.jpg",
+    "category": "Accessories",
+    "description": "Smartwatch with advanced health features, crash detection, and all-day fitness tracking."
+  },
+  {
+    "id": 9,
+    "title": "PlayStation 5 Console",
+    "price": 499,
+    "image": "/images/ps5.jpg",
+    "category": "Consoles",
+    "description": "Sony PlayStation 5 with lightning-fast load times, ray tracing, and immersive gaming experience."
+  },
+  {
+    "id": 10,
+    "title": "Xbox Series X Console",
+    "price": 499,
+    "image": "/images/xbox-seriesx.jpg",
+    "category": "Consoles",
+    "description": "Microsoft Xbox Series X with powerful graphics, quick resume, and Game Pass support."
+  }
+]
