@@ -1,12 +1,23 @@
 import React from "react";
 import { useCart } from "../context/CartContext";
+import { Link } from "react-router-dom";
+
 
 function Cart() {
   const { cart, dispatch } = useCart();
 
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
-  if (cart.length === 0) return <h2 style={{ textAlign: "center" }}>🛒 Your cart is empty</h2>;
+  if (cart.length === 0)   return (
+    <div className="empty-state">
+      {/* <img src="/images/undraw_empty-cart_574u" alt="Empty cart" /> */}
+      <h2>Your cart is empty</h2>
+      <p>Looks like you haven’t added anything yet.</p>
+      <Link to="/">
+        <button>Start Shopping</button>
+      </Link>
+    </div>
+  );
 
   return (
     <div className="cart-container">

@@ -2,15 +2,22 @@ import React, { useState, useEffect } from "react";
 import { useCart } from "../context/CartContext";
 import productsData from "../data/product.json";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import Spinner from "../components/Spinner";
 
 function Home() {
   const [products, setProducts] = useState([]);
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("All");
+  const [loading, setLoading] = useState(true); // 👈 loading state
   const { dispatch } = useCart();
 
   useEffect(() => {
-    setProducts(productsData); // load from local JSON
+    // Simulate API call delay
+    setTimeout(() => {
+      setProducts(productsData);
+      setLoading(false);
+    }, 1000);
   }, []);
 
   // Filtered products
@@ -20,6 +27,9 @@ function Home() {
       category === "All" ? true : product.category?.toLowerCase() === category.toLowerCase();
     return matchesSearch && matchesCategory;
   });
+
+  // Show spinner while loading
+  if (loading) return <Spinner />;
 
   return (
     <div>
@@ -44,16 +54,27 @@ function Home() {
       {/* Product Grid */}
       <div className="product-grid">
         {filteredProducts.length === 0 ? (
-          <p style={{ textAlign: "center", gridColumn: "1 / -1" }}>No products found.</p>
+          <div className="empty-state">
+    <img src="/images/no-results.png" alt="No results" />
+    <p>No products match your search.</p>
+  </div>
         ) : (
           filteredProducts.map((product) => (
             <div key={product.id} className="product-card">
-              <Link to={`/product/${product.id}`} style={{ textDecoration: "none", color: "inherit" }}>
+              <Link
+                to={`/product/${product.id}`}
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
                 <img src={product.image} alt={product.title} />
                 <h3>{product.title}</h3>
                 <p>${product.price}</p>
               </Link>
-              <button onClick={() => dispatch({ type: "ADD_ITEM", payload: product })}>
+              <button
+                onClick={() => {
+                  dispatch({ type: "ADD_ITEM", payload: product });
+                  toast.success(`${product.title} added to cart!`);
+                }}
+              >
                 Add to Cart
               </button>
             </div>

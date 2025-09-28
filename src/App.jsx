@@ -7,6 +7,8 @@ import Checkout from "./pages/Checkout";
 import { CartProvider } from "./context/CartContext";
 import Success from "./pages/Success";
 import ProductDetail from "./pages/ProductDetail";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
@@ -20,6 +22,7 @@ function App() {
           <Route path="/success" element={<Success />} />
           <Route path="/product/:id" element={<ProductDetail />} />
         </Routes>
+              <ToastContainer position="bottom-right" autoClose={2000} />
       </Router>
     </CartProvider>
   );

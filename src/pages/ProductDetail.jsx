@@ -2,6 +2,7 @@ import React from "react";
 import { useParams, Link } from "react-router-dom";
 import productsData from "../data/product.json"; // local product list
 import { useCart } from "../context/CartContext";
+import { toast } from "react-toastify";
 
 function ProductDetail() {
   const { id } = useParams();
@@ -46,7 +47,10 @@ function ProductDetail() {
                 <h3>{rp.title}</h3>
                 <p>${rp.price}</p>
               </Link>
-              <button onClick={() => dispatch({ type: "ADD_ITEM", payload: rp })}>
+              <button onClick={() => {
+    dispatch({ type: "ADD_ITEM", payload: product });
+    toast.success(`${product.title} added to cart!`);
+  }}>
                 Add to Cart
               </button>
             </div>
