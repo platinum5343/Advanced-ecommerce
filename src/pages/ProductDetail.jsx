@@ -1,8 +1,9 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
-import productsData from "../data/product.json"; // local product list
+import productsData from "../data/product.json";
 import { useCart } from "../context/CartContext";
 import { toast } from "react-toastify";
+import "./productDetail.css";
 
 function ProductDetail() {
   const { id } = useParams();
@@ -12,7 +13,6 @@ function ProductDetail() {
 
   if (!product) return <h2 style={{ textAlign: "center" }}>Product not found</h2>;
 
-  // Related products (pick 3 others randomly)
   const relatedProducts = productsData
     .filter(p => p.id !== product.id)
     .sort(() => 0.5 - Math.random())
@@ -26,8 +26,13 @@ function ProductDetail() {
         <div className="product-info">
           <h2>{product.title}</h2>
           <p className="price">${product.price}</p>
-          <p>{product.description}</p>
-          <button onClick={() => dispatch({ type: "ADD_ITEM", payload: product })}>
+          <p className="desc">{product.description}</p>
+          <button
+            onClick={() => {
+              dispatch({ type: "ADD_ITEM", payload: product });
+              toast.success(`${product.title} added to cart!`);
+            }}
+          >
             Add to Cart
           </button>
           <Link to="/" style={{ marginLeft: "1rem" }}>
@@ -42,15 +47,20 @@ function ProductDetail() {
         <div className="product-grid">
           {relatedProducts.map(rp => (
             <div key={rp.id} className="product-card">
-              <Link to={`/product/${rp.id}`} style={{ textDecoration: "none", color: "inherit" }}>
+              <Link
+                to={`/product/${rp.id}`}
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
                 <img src={rp.image} alt={rp.title} />
                 <h3>{rp.title}</h3>
                 <p>${rp.price}</p>
               </Link>
-              <button onClick={() => {
-    dispatch({ type: "ADD_ITEM", payload: product });
-    toast.success(`${product.title} added to cart!`);
-  }}>
+              <button
+                onClick={() => {
+                  dispatch({ type: "ADD_ITEM", payload: rp }); // ✅ fix here
+                  toast.success(`${rp.title} added to cart!`);
+                }}
+              >
                 Add to Cart
               </button>
             </div>

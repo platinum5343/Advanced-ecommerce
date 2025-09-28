@@ -54,9 +54,13 @@ function Home() {
       {/* Product Grid */}
       <div className="product-grid">
         {filteredProducts.length === 0 ? (
-          <div className="empty-state">
+         <div className="empty-state">
     <img src="/images/no-results.png" alt="No results" />
-    <p>No products match your search.</p>
+    <h2>No products found</h2>
+    <p>Try adjusting your search or filter settings.</p>
+    <Link to="/">
+      <button className="primary-btn">Back to All Products</button>
+    </Link>
   </div>
         ) : (
           filteredProducts.map((product) => (

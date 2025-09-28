@@ -9,14 +9,15 @@ function Cart() {
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   if (cart.length === 0)   return (
-    <div className="empty-state">
-      {/* <img src="/images/undraw_empty-cart_574u" alt="Empty cart" /> */}
-      <h2>Your cart is empty</h2>
-      <p>Looks like you haven’t added anything yet.</p>
-      <Link to="/">
-        <button>Start Shopping</button>
-      </Link>
-    </div>
+   <div className="empty-state">
+  <img src="/images/empty-cart.png" alt="Empty cart" />
+  <h2>Your cart is empty</h2>
+  <p>Looks like you haven’t added anything yet.</p>
+  <Link to="/">
+    <button className="primary-btn">Start Shopping</button>
+  </Link>
+</div>
+
   );
 
   return (
@@ -37,13 +38,21 @@ function Cart() {
         </div>
       ))}
 
-      <h3 style={{ textAlign: "right" }}>Total: ${total.toFixed(2)}</h3>
-      <button
-        onClick={() => dispatch({ type: "CLEAR_CART" })}
-        style={{ marginTop: "1rem", background: "#d33", color: "#fff", padding: "10px 20px", border: "none", borderRadius: "5px" }}
-      >
-        Clear Cart
-      </button>
+     <h3 style={{ textAlign: "right" }}>Total: ${total.toFixed(2)}</h3>
+
+<div className="cart-actions">
+  <button
+    onClick={() => dispatch({ type: "CLEAR_CART" })}
+    className="clear-btn"
+  >
+    Clear Cart
+  </button>
+
+  <Link to="/checkout">
+    <button className="checkout-btn">Proceed to Checkout</button>
+  </Link>
+</div>
+
     </div>
   );
 }
